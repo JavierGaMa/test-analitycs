@@ -43,6 +43,6 @@ export default defineConfig({
   exportStatic: {},
   esbuild: {},
   analytics: {
-    ga: '',
+    ga: 'GTM-P33JT7W',
   },
 });
