@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PageContainer } from '@ant-design/pro-layout';
-import { Card, Alert, Typography } from 'antd';
+import { Card, Alert, Typography, Button } from 'antd';
 import { useIntl, FormattedMessage } from 'umi';
+import TagManager from 'react-gtm-module'
+import useGTM from '@elgorditosalsero/react-gtm-hook'
 import styles from './Welcome.less';
 
 const CodePreview: React.FC<{}> = ({ children }) => (
@@ -12,10 +14,58 @@ const CodePreview: React.FC<{}> = ({ children }) => (
   </pre>
 );
 
+// const dataLayer = [];
+
+const tagManagerArgs = {
+  gtmId: 'GTM-P33JT7W',
+  dataLayer: {
+      userId: '001',
+      userProject: 'project',
+      count: 0
+  }
+}
+
+TagManager.initialize(tagManagerArgs)
+
+
+
 export default (): React.ReactNode => {
+
+  const { init, UseGTMHookProvider } = useGTM()
+
+  const [count, setCount] = useState(0);
+
+
+  useEffect(() => init({ id: 'GTM-P33JT7W' }), [])
+
+  // useEffect(()=>{
+
+  //   const temp = {...tagManagerArgs,
+  //   dataLayer: {...tagManagerArgs.dataLayer,
+  //     count
+  //   }
+  // };
+  //   TagManager.dataLayer(temp)
+
+  // },[count])
+
   const intl = useIntl();
   return (
+    <UseGTMHookProvider >
     <PageContainer>
+      <Button onClick={() => {
+        setCount(state => state +1)
+      }}>
+        Press me
+      </Button>
+
+      <Button onClick={() => {
+       
+      }}>
+        Press me 2
+      </Button>
+
+      {count}
       <Card>
         <Alert
           message={intl.formatMessage({
@@ -59,5 +109,6 @@ export default (): React.ReactNode => {
         <CodePreview>yarn add @ant-design/pro-layout</CodePreview>
       </Card>
     </PageContainer>
+    </UseGTMHookProvider>
   );
 };

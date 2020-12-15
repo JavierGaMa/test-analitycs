@@ -40,10 +40,9 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
-  pwa:{},
   exportStatic: {},
   esbuild: {},
   analytics: {
-    ga: 'UA-177539883-2',
+    ga: '',
   },
 });
