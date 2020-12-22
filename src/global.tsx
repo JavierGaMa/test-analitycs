@@ -43,6 +43,7 @@ if (pwa) {
     const key = `open${Date.now()}`;
     const btn = (
       <Button
+      className="rbt_an_button"
         type="primary"
         onClick={() => {
           notification.close(key);
