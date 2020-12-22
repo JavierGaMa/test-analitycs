@@ -8,6 +8,7 @@ import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 import { TableListItem } from './data.d';
 import { queryRule, updateRule, addRule, removeRule } from './service';
+import TagManager from 'react-gtm-module';
 
 /**
  * 添加节点
@@ -27,6 +28,14 @@ const handleAdd = async (fields: TableListItem) => {
   }
 };
 
+const tagManagerArgs = {
+  gtmId: 'GTM-P33JT7W',
+  dataLayer: {
+    userId: '001',
+  },
+  dataLayerName: 'ListTableList',
+};
+TagManager.initialize(tagManagerArgs);
 /**
  * 更新节点
  * @param fields

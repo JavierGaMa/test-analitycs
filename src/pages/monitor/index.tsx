@@ -8,6 +8,7 @@ import { StateType } from './model';
 import { Pie, WaterWave, Gauge, TagCloud, Map } from './components/Charts';
 import ActiveChart from './components/ActiveChart';
 import styles from './style.less';
+import TagManager from 'react-gtm-module';
 
 const { Countdown } = Statistic;
 
@@ -18,7 +19,15 @@ interface MonitorProps {
   dispatch: Dispatch<any>;
   loading: boolean;
 }
+const tagManagerArgs = {
+  gtmId: 'GTM-P33JT7W',
+  dataLayer: {
+    userId: '001',
+  },
+  dataLayerName: 'Monitor',
+};
 
+TagManager.initialize(tagManagerArgs);
 class Monitor extends Component<MonitorProps> {
   componentDidMount() {
     const { dispatch } = this.props;
@@ -113,10 +122,7 @@ class Monitor extends Component<MonitorProps> {
               </Card>
               <Card
                 title={
-                  <FormattedMessage
-                    id="monitor.monitor.efficiency"
-                    defaultMessage="Efficiency"
-                  />
+                  <FormattedMessage id="monitor.monitor.efficiency" defaultMessage="Efficiency" />
                 }
                 style={{ marginBottom: 24 }}
                 bodyStyle={{ textAlign: 'center' }}
@@ -183,10 +189,7 @@ class Monitor extends Component<MonitorProps> {
                       color="#2FC25B"
                       percent={32}
                       title={
-                        <FormattedMessage
-                          id="monitor.monitor.hot-pot"
-                          defaultMessage="Hot pot"
-                        />
+                        <FormattedMessage id="monitor.monitor.hot-pot" defaultMessage="Hot pot" />
                       }
                       total="32%"
                       height={128}

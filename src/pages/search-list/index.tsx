@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import TagManager from 'react-gtm-module';
 import { Input } from 'antd';
 import { PageContainer } from '@ant-design/pro-layout';
 import { history } from 'umi';
@@ -13,6 +13,16 @@ interface SearchListProps {
     pathname: string;
   };
 }
+
+const tagManagerArgs = {
+  gtmId: 'GTM-P33JT7W',
+  dataLayer: {
+    userId: '001',
+  },
+  dataLayerName: 'SearchList',
+};
+
+TagManager.initialize(tagManagerArgs);
 
 class SearchList extends Component<SearchListProps> {
   handleTabChange = (key: string) => {
